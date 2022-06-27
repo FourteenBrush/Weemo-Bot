@@ -1,5 +1,6 @@
 package me.fourteendoggo.weemobot.commands;
 
+import me.fourteendoggo.weemobot.commands.sender.CommandSender;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
@@ -10,12 +11,8 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 public class CommandListener extends ListenerAdapter {
-    private final Logger logger;
+    private static final Logger LOG = Logger.getLogger("Weemo");
     private final Map<String, CommandEntry> commandMap = new HashMap<>();
-
-    public CommandListener(Logger logger) {
-        this.logger = logger;
-    }
 
     @Override
     @SuppressWarnings("ConstantConditions")
@@ -24,7 +21,20 @@ public class CommandListener extends ListenerAdapter {
         if (entry == null) return;
         DiscordCommand command = entry.command();
 
+        CommandSender sender;
+        if (event.isGuildCommand()) {
+            sender = CommandSender.fromMember(event.getMember());
+        } else {
+            sender = CommandSender.fromUser(event.getUser());
+        }
 
+        if (!sender.hasPermission(command.getRequiredPermissions())) {
+            sender.sendMessage("Insufficient permissions");
+            return;
+        }
+
+        CooldownManager cooldownManager = entry.cooldownManager();
+        if
 
 
         if (event.getName().equals("hug")) {

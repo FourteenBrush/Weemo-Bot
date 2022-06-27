@@ -1,8 +1,12 @@
 package me.fourteendoggo.weemobot.commands.sender;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.User;
 
 public interface CommandSender {
+
+    long getId();
 
     boolean hasPermission(Permission permission);
 
@@ -19,5 +23,13 @@ public interface CommandSender {
         for (String message : messages) {
             sendMessage(message);
         }
+    }
+
+    static CommandSender fromMember(Member member) {
+
+    }
+
+    static CommandSender fromUser(User user) {
+
     }
 }

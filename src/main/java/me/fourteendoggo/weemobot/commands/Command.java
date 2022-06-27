@@ -12,9 +12,9 @@ public abstract class Command<T> {
     public abstract CommandResult execute(T t);
 
     protected enum CommandType {
-        CONSOLE,
-        GUILD_SENDER,
-        DM_SENDER
+        CONSOLE_COMMAND,
+        GUILD_COMMAND,
+        PRIVATE_COMMAND
     }
 
     protected enum CommandResult {

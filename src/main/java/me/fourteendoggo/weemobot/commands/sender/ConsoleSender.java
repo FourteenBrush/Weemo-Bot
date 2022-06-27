@@ -8,6 +8,11 @@ public class ConsoleSender implements CommandSender {
     private static final Logger LOG = Logger.getLogger("Weemo");
 
     @Override
+    public long getId() {
+        return 0;
+    }
+
+    @Override
     public boolean hasPermission(Permission permission) {
         return true;
     }

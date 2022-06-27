@@ -89,9 +89,13 @@ public class WeemoBot {
         guild.upsertCommand("hug", "give a hug to someone")
                 .addOption(OptionType.STRING, "who", "who should get hugs", true)
                 .addOptions(new OptionData(OptionType.INTEGER, "amount", "how many hugs")
-                        .setRequiredRange(1, Short.MAX_VALUE)
-                        .addChoice("1", 1))
+                        .setRequiredRange(1, Short.MAX_VALUE))
                 .queue();
+        guild.upsertCommand("echo", "sends a message to the specified channel")
+                .addOption(OptionType.CHANNEL, "channel", "channel to send a message to")
+                .addOption(OptionType.STRING, "message", "the message to send", true)
+                .queue();
+
     }
 
     private record Config(String token, long guildId) {}
