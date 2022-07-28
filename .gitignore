@@ -1,4 +1,4 @@
-/config.json
+src/main/resources/config.json
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
