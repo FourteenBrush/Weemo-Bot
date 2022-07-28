@@ -24,12 +24,4 @@ public interface CommandSender {
             sendMessage(message);
         }
     }
-
-    static CommandSender fromMember(Member member) {
-
-    }
-
-    static CommandSender fromUser(User user) {
-
-    }
 }

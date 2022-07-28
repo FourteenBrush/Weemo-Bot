@@ -1,5 +1,7 @@
 package me.fourteendoggo.weemobot.commands.commands;
 
+import me.fourteendoggo.weemobot.commands.CommandResult;
+import me.fourteendoggo.weemobot.commands.CommandType;
 import me.fourteendoggo.weemobot.commands.DiscordCommand;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;

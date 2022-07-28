@@ -31,7 +31,7 @@ public class WeemoBot {
         Config config = readConfig();
 
         JDA jda = JDABuilder.createDefault(config.token())
-                .addEventListeners(new CommandListener(logger)).setActivity(Activity.watching("/help"))
+                .addEventListeners(new CommandListener()).setActivity(Activity.watching("/help"))
                 .build().awaitReady();
 
         Guild guild = jda.getGuildById(config.guildId());
@@ -92,10 +92,9 @@ public class WeemoBot {
                         .setRequiredRange(1, Short.MAX_VALUE))
                 .queue();
         guild.upsertCommand("echo", "sends a message to the specified channel")
-                .addOption(OptionType.CHANNEL, "channel", "channel to send a message to")
+                .addOption(OptionType.CHANNEL, "channel", "channel to send a message to", true)
                 .addOption(OptionType.STRING, "message", "the message to send", true)
                 .queue();
-
     }
 
     private record Config(String token, long guildId) {}

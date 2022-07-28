@@ -9,16 +9,13 @@ public abstract class Command<T> {
         this.commandType = commandType;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public CommandType getCommandType() {
+        return commandType;
+    }
+
     public abstract CommandResult execute(T t);
-
-    protected enum CommandType {
-        CONSOLE_COMMAND,
-        GUILD_COMMAND,
-        PRIVATE_COMMAND
-    }
-
-    protected enum CommandResult {
-        SUCCESS,
-        FAILURE
-    }
 }
